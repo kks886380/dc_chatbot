@@ -9,10 +9,14 @@ intents = discord.Intents.default()
 bot = discord.Bot(intents=intents)
 
 
-@bot.listen("ready")
+@bot.listen("on_ready")
 async def on_ready():
     print(f"已登入：{bot.user}")
 
+
+@bot.slash_command(name="hi", description="say hi")
+async def hi(ctx):
+    await ctx.respond("hi")
 
 if token:
     bot.run(token)
